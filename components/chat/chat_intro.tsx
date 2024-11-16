@@ -8,8 +8,8 @@ const products = [
 	'What are the benefits of the ATEC Spine products?',
 	'How do ATEC Spine products compare to other spinal products?',
 	'What is the success rate of ATEC Spine products?',
-	'What are the key features of ATEC Spine products?',
-	'What are the different types of ATEC Spine products?',
+	'What is the skif id for invictus oct?',
+	'What is the indentiti product line?',
 ];
 
 const procedure = [
