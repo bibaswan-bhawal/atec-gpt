@@ -22,6 +22,8 @@ export async function POST(request: Request, { params: { threadId } }: any) {
 }
 
 export async function GET(request: Request, { params: { threadId } }: any) {
+	await request.json();
+
 	const messages = await openai.beta.threads.messages.list(threadId);
 
 	return Response.json(messages);

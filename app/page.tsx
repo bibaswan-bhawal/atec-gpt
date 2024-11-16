@@ -10,12 +10,9 @@ import { ThreadHistoryProps } from '@/lib/types';
 export default function Home() {
 	const [threadId, setThreadId] = useState<string | undefined>(undefined);
 
-	const [items, setItems] = useState<any>(null);
-
-	useEffect(() => {
-		const savedValue: ThreadHistoryProps[] = JSON.parse(localStorage.getItem('items') || '[]');
-		setItems(savedValue);
-	}, []);
+	const [items, setItems] = useState<ThreadHistoryProps[]>(() => {
+		return JSON.parse(localStorage.getItem('items') || '[]');
+	});
 
 	useEffect(() => {
 		localStorage.setItem('items', JSON.stringify(items));
@@ -24,7 +21,7 @@ export default function Home() {
 	}, [items]);
 
 	const addThread = (threadId: string, text: string) => {
-		const newItems: ThreadHistoryProps[] = [...items, { threadId: threadId, message: text }];
+		const newItems: ThreadHistoryProps[] = [...items!, { threadId: threadId, message: text }];
 		setItems(newItems);
 	};
 
@@ -39,7 +36,7 @@ export default function Home() {
 				<div className='m-4'>
 					<Image className='mr-4' src='/assets/atec_logo.svg' alt='ATEC Spine Logo' width={32} height={32} />
 					<h1 className='text-xl font-medium my-4'>History</h1>
-					{items.map((thread: ThreadHistoryProps, index: any) => (
+					{items?.map((thread: ThreadHistoryProps, index: any) => (
 						<div key={index} onClick={() => setThread(thread.threadId)}>
 							<p key={index}>{thread.message}</p>
 						</div>
