@@ -1,10 +1,14 @@
-const ChatHistory = () => {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { MessageProps } from '@/lib/types';
+import { Message } from './messages/message';
+
+const ChatHistory = ({ messagesEndRef, messages }: any) => {
 	return (
-		<div className='order-last flex grow flex-col overflow-y-auto'>
-			<h1 className='self-end'>Hello World!</h1>
-			<h1 className='self-start'>Hello World!</h1>
-			<h1 className='self-end'>Hello World!</h1>
-			<h1 className='self-start'>Hello World!</h1>
+		<div className='order-3 flex grow flex-col overflow-y-auto'>
+			{messages.map((message: MessageProps, index: any) => (
+				<Message key={index} role={message.role} text={message.text} />
+			))}
+			<div ref={messagesEndRef} />
 		</div>
 	);
 };
