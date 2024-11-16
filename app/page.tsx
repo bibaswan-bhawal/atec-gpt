@@ -10,9 +10,12 @@ import { ThreadHistoryProps } from '@/lib/types';
 export default function Home() {
 	const [threadId, setThreadId] = useState<string | undefined>(undefined);
 
-	const [items, setItems] = useState<ThreadHistoryProps[]>(() => {
-		return JSON.parse(localStorage.getItem('items') || '[]');
-	});
+	const [items, setItems] = useState<any>(null);
+
+	useEffect(() => {
+		const savedValue: ThreadHistoryProps[] = JSON.parse(localStorage.getItem('items') || '[]');
+		setItems(savedValue);
+	}, []);
 
 	useEffect(() => {
 		localStorage.setItem('items', JSON.stringify(items));
