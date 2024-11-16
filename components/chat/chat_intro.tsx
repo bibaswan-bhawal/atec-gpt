@@ -7,7 +7,7 @@ import { Button } from '../ui/button';
 const products = [
 	'What are the benefits of the ATEC Spine products?',
 	'How do ATEC Spine products compare to other spinal products?',
-	'What is the success rate of ATEC Spine products?',
+	'Why would you choose to do a ptp at l3 l4 over an ltp?',
 	'What is the skif id for invictus oct?',
 	'What is the indentiti product line?',
 ];
@@ -15,9 +15,9 @@ const products = [
 const procedure = [
 	'What are the benefits of the PTP?',
 	'Why do LTP instead of a PLIF?',
-	'What is the success rate of ATEC Spine procedures?',
-	'What are the key features of ATEC Spine procedures?',
-	'What are the different types of ATEC Spine procedures?',
+	'What are the goals of spine surgery?',
+	'Why is alignment important in spine surgery?',
+	'What are the different types of plates atec offers for cervical?',
 ];
 
 const history = [
@@ -74,9 +74,9 @@ const ChatIntro = ({ askQuestion }: any) => {
 					</Card>
 					<Card className='w-[328px]'>
 						<CardHeader>
-							<CardTitle>Procedures</CardTitle>
+							<CardTitle>SpineACE</CardTitle>
 						</CardHeader>
-						<CardContent>At the forefront of spinal care, here at ATEC we offer innovative products that improve patient outcomes. From advanced fusion</CardContent>
+						<CardContent>Need a refresher on SpineACE? Ask all your burning questions about SpineACE.</CardContent>
 						<CardFooter className='flex justify-between'>
 							<Button onClick={handleProcedureQuestion}>Explore Procedures</Button>
 						</CardFooter>
@@ -85,7 +85,7 @@ const ChatIntro = ({ askQuestion }: any) => {
 						<CardHeader>
 							<CardTitle>Company History</CardTitle>
 						</CardHeader>
-						<CardContent>At the forefront of spinal care, here at ATEC we offer innovative products that improve patient outcomes. From advanced fusion</CardContent>
+						<CardContent>ATEC has been around for over 20 years, roll the dice to learn more about some of our biggest moments.</CardContent>
 						<CardFooter className='flex justify-between'>
 							<Button onClick={handleHistoryQuestion}>Explore ATEC History</Button>
 						</CardFooter>
