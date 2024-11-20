@@ -16,13 +16,11 @@ export default function ChatModule({ preLoadedThreadId, addThread }: any) {
 
 	const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
-	// create a new threadID when chat component created
+	// create a new thread id when chat component created
 	useEffect(() => {
 		const createThread = async () => {
 			if (preLoadedThreadId) return;
-			const res = await fetch(`/api/assistants/threads`, {
-				method: 'POST',
-			});
+			const res = await fetch(`/api/assistants/threads`, { method: 'POST' });
 
 			const data = await res.json();
 

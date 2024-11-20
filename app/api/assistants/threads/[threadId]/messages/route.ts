@@ -1,13 +1,13 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import { type NextRequest } from 'next/server';
 
-import { assistantId } from '@/app/assistant-config';
 import { openai } from '@/app/openai';
-
-export const runtime = 'nodejs';
+import { assistantId } from '@/app/assistant-config';
 
 // Send a new message to a thread
-export async function POST(request: Request, { params: { threadId } }: any) {
+export async function POST(request: NextRequest, { params }: { params: Promise<{ threadId: string }> }) {
 	const { content } = await request.json();
+
+	const threadId = (await params).threadId;
 
 	await openai.beta.threads.messages.create(threadId, {
 		role: 'user',
@@ -21,8 +21,9 @@ export async function POST(request: Request, { params: { threadId } }: any) {
 	return new Response(stream.toReadableStream());
 }
 
-export async function GET(request: Request, { params: { threadId } }: any) {
-	await request.json();
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function GET(request: NextRequest, { params }: { params: Promise<{ threadId: string }> }) {
+	const threadId = (await params).threadId;
 
 	const messages = await openai.beta.threads.messages.list(threadId);
 
